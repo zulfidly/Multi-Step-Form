@@ -16,11 +16,13 @@
     div {
         display: flex;
         flex-flow: column nowrap;
-        gap: 1px;
+        gap: 5px;
     }
 
     h2, h3, h4 {
         color: var(--color-text);
     }
-
+    @media (min-width: 1024px) {
+        h2 { font-size: 1rem; }   
+    }
 </style>

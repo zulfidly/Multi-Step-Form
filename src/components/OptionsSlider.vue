@@ -62,4 +62,13 @@
   .right {
     transform: translate(100%, -50%);
   }
+
+  @media (min-width: 1024px) {
+    .billCycleOptions {
+      height: 50px;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+  }
   </style>

@@ -23,7 +23,9 @@
   --optSlider-ctnr-H: 25px; /* just amend this parameter for option slider */
   --optSlider-ctnr-W: calc(var(--optSlider-ctnr-H)*2.1);
   --optSlider-circle-H: calc((var(--optSlider-ctnr-H)*0.7));
-  --anime-speed: 200ms; 
+  --anime-speed: 100ms; 
+  --desktop-screen: 1024px;
+  --width-userBoard-desktop: 600px;
 }
 
 /* semantic color variables for this project */

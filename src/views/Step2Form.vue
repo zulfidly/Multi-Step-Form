@@ -87,67 +87,101 @@
 </script>
 
 <template >
-    <div class="userBoard">
-        <h1>Select your plan</h1>
-        <h3>
-            You have the option of monthly or yearly billing.
-        </h3>
+    <div class="step2MainCtnr">
+        <div class="board1">
+            <h1>Select your plan</h1>
+            <h3>
+                You have the option of monthly or yearly billing.
+            </h3>
+        </div>
 
-        <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Arcade }">
-            <iconArcade/>
-            <PackageOptions>
-                <template #packageTitle>Arcade</template>
-                    <template #pricing>${{ testComputed1 }}</template>
-                    <template #promotion> {{ testComputed2 }}</template>
-            </PackageOptions>
-            <span class="btnSensor" 
-                data-plan="Arcade"
-                @click="step2clicked">
-            </span>
-        </button>
-        <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Advanced }">
-            <iconAdvanced/>
-            <PackageOptions>
-                <template #packageTitle>Advanced</template>
-                    <template v-if="isYearly" #pricing>${{ plan.advanced.yearly }} /year</template>
-                    <template v-else #pricing>${{ plan.advanced.monthly }} /month</template>
-                    <template v-if="isYearly" #promotion> {{ plan.advanced.promotion }}</template>
-                    <template v-else #promotion></template>
-            </PackageOptions>
-            <span class="btnSensor" 
-                data-plan="Advanced"
-                @click="step2clicked">
-            </span>
-        </button>
-        <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Pro }">
-            <iconPro/>
-            <PackageOptions>
-                <template #packageTitle>Pro</template>
-                <template v-if="isYearly" #pricing>${{ plan.pro.yearly }} /year</template>
-                <template v-else #pricing>${{ plan.pro.monthly }} /month</template>
-                <template v-if="isYearly" #promotion> {{ plan.pro.promotion }}</template>
-                <template v-else #promotion></template>
-            </PackageOptions>
-            <span class="btnSensor"
-                data-plan="Pro"
-                @click="step2clicked">
-            </span>
-        </button>
-        <OptionSlider/>
+        <div class="board2">
+            <div class="board2a">
+                <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Arcade }">
+                    <iconArcade/>
+                    <PackageOptions>
+                        <template #packageTitle>Arcade</template>
+                            <template #pricing>${{ testComputed1 }}</template>
+                            <template #promotion> {{ testComputed2 }}</template>
+                    </PackageOptions>
+                    <span class="btnSensor" 
+                        data-plan="Arcade"
+                        @click="step2clicked">
+                    </span>
+                </button>
+                <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Advanced }">
+                    <iconAdvanced/>
+                    <PackageOptions>
+                        <template #packageTitle>Advanced</template>
+                            <template v-if="isYearly" #pricing>${{ plan.advanced.yearly }} /year</template>
+                            <template v-else #pricing>${{ plan.advanced.monthly }} /month</template>
+                            <template v-if="isYearly" #promotion> {{ plan.advanced.promotion }}</template>
+                            <template v-else #promotion></template>
+                    </PackageOptions>
+                    <span class="btnSensor" 
+                    data-plan="Advanced"
+                    @click="step2clicked">
+                </span>
+                </button>
+                <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Pro }">
+                    <iconPro/>
+                    <PackageOptions>
+                        <template #packageTitle>Pro</template>
+                        <template v-if="isYearly" #pricing>${{ plan.pro.yearly }} /year</template>
+                        <template v-else #pricing>${{ plan.pro.monthly }} /month</template>
+                        <template v-if="isYearly" #promotion> {{ plan.pro.promotion }}</template>
+                        <template v-else #promotion></template>
+                    </PackageOptions>
+                    <span class="btnSensor"
+                    data-plan="Pro"
+                    @click="step2clicked">
+                </span>
+                </button>
+            </div>
+            <OptionSlider/>
+        </div>
     </div>
 
 </template>
 
 
 <style scoped>
+    .step2MainCtnr {
+        background-color: var(--color-background);
+        border-radius: 10px;
+    }
+    .board1 {
+        width: 375px;
+        height: auto;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        padding: 1rem;
+        gap: 1rem;
+        opacity: 1;
+    }
+    .board2 {
+        width: 375px;
+        height: auto;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        padding: 1rem;
+        gap: 1rem;
+        opacity: 1;
+    }
+    .board2a {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+    }
     .highlightPlan {
         background-color: var(--color-border);
         border: 1px solid var(--color-text);
-
     }
     .cl_step2 {
-        width: auto;
-        height: 120px;
+        width: 100%;
+        height: 100px;
         display: grid;
         grid-template-columns: auto 2fr;
         gap: 20px;
@@ -162,5 +196,15 @@
         cursor: pointer;
         text-align: left;
     }
-
+    @media (min-width: 1024px) {
+        .cl_step2 {
+            height: 100px;
+        }
+        .board1, .board2 {
+            width: var(--width-userBoard-desktop);
+        }
+        .board2a {
+            flex-flow: row nowrap;
+        }
+    }
 </style>

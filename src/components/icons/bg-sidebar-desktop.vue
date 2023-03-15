@@ -12,3 +12,18 @@
         </g>
     </svg>
 </template>
+
+
+<style scoped>
+    svg {
+        width: fit-content;
+        height: auto;
+        display: none;
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+        z-index: 1;
+        
+    }
+
+</style>

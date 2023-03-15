@@ -9,11 +9,11 @@
     onBeforeMount(() => {
         navi.currExt = route.path
         navi.curr = 0
-        console.log("onBeforeMount: ", navi)
+        // console.log("onBeforeMount: ", navi)
     })       
     onMounted(() => {
         navi.currExt = route.path
-        console.log("onMounted: ", navi)
+        // console.log("onMounted: ", navi)
     })       
 </script>
 
@@ -55,23 +55,6 @@
 </template>
 
 <style scoped>
-
-    .userBoard {
-        width: 375px;
-        height: auto;
-        /* position: absolute; */
-        /* top: 100px; */
-        /* z-index: 5; */
-        background: var(--color-background-soft);
-        border-radius: 10px;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        padding: 2rem;
-        gap: 1rem;
-        opacity: 1;
-        transition: all 0.9s;
-    }
     input {
         width: 100%;
         height: 40px;

@@ -1,7 +1,8 @@
 <script setup>
   import { reactive, watchEffect } from "vue"
   import { RouterLink, RouterView, useRouter, useRoute,   } from 'vue-router'
-  import Wallpaper from "./components/icons/bg-sidebar-mobile.vue"
+  import WallMobile from "./components/icons/bg-sidebar-mobile.vue"
+  import WallDesktop from "./components/icons/bg-sidebar-desktop.vue"
   import { navi } from "./views/Step1Form.vue"
   
   const router = useRouter()
@@ -10,7 +11,7 @@
   watchEffect(() =>  {
       navi.prev = router.options.routes[navi.curr].previous
       navi.next = router.options.routes[navi.curr].next 
-      console.log(navi)
+      // console.log(navi)
   })
 
   function getCurrIndex(e) {
@@ -21,60 +22,73 @@
 </script>
 
 <template>
-  <Wallpaper />
+  <div id="ctnr1">
+    <WallMobile class="wallMobile"/>
+    <WallDesktop class="wallDesktop"/>
 
-  <nav class="stepIndex">
-    <div class="stepNumberCtnr">
-        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==0?true:false}" to="/">1</RouterLink>
-        <section class="stepNumberDescription">
-            <h4>Step 1</h4>
-            <h3>YOUR INFO</h3>
-        </section>
-    </div>
-    <div class="stepNumberCtnr">
-        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false}" to="/step2">2</RouterLink>
-        <section class="stepNumberDescription">
-            <h4>Step 2</h4>
-            <h3>SELECT PLANS</h3>
-        </section>
-    </div>
-    <div class="stepNumberCtnr">
-        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==2?true:false}" to="/step3">3</RouterLink>
-        <section class="stepNumberDescription">
-            <h4>Step 3</h4>
-            <h3>ADD-ONS</h3>
-        </section>
-    </div>
-    <div class="stepNumberCtnr">
-        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==3?true:false}" to="/step4">4</RouterLink>
-        <section class="stepNumberDescription">
-            <h4>Step 4</h4>
-            <h3>SUMMARY</h3>
-        </section>
-    </div>
-  </nav>
-  <RouterView v-slot="{ Component }">
-    <Transition name="tranRV" mode="out-in">
-      <component :is="Component" />
-    </Transition>
-  </RouterView>
+    <nav class="stepIndex">
+      <div class="stepNumberCtnr">
+          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==0?true:false}" to="/">1</RouterLink>
+          <section class="stepNumberDescription">
+              <h4>Step 1</h4>
+              <h3>YOUR INFO</h3>
+          </section>
+      </div>
+      <div class="stepNumberCtnr">
+          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false}" to="/step2">2</RouterLink>
+          <section class="stepNumberDescription">
+              <h4>Step 2</h4>
+              <h3>SELECT PLANS</h3>
+          </section>
+      </div>
+      <div class="stepNumberCtnr">
+          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==2?true:false}" to="/step3">3</RouterLink>
+          <section class="stepNumberDescription">
+              <h4>Step 3</h4>
+              <h3>ADD-ONS</h3>
+          </section>
+      </div>
+      <div class="stepNumberCtnr">
+          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==3?true:false}" to="/step4">4</RouterLink>
+          <section class="stepNumberDescription">
+              <h4>Step 4</h4>
+              <h3>SUMMARY</h3>
+          </section>
+      </div>
+    </nav>
+  </div>
 
-  <nav class="naviBtnCtnr">
-    <div>
-      <RouterLink @click="navi.curr--" :to="`${navi.prev}`">
-        <button class="goBack"  v-show="navi.prev">Go Back</button>
-      </RouterLink>
-    </div>
+  <div id="ctnr2">
+    <RouterView v-slot="{ Component }">
+      <Transition name="tranRV" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
 
-    <div>
-      <RouterLink @click="navi.curr++" :to="`${navi.next}`">
-        <button class="nextStep" v-show="navi.next">Next Page</button>
-      </RouterLink>
-    </div>
-  </nav>
+    <nav class="naviBtnCtnr">
+      <div>
+        <RouterLink @click="navi.curr--" :to="`${navi.prev}`">
+          <button class="goBack"  v-show="navi.prev">Go Back</button>
+        </RouterLink>
+      </div>
+      <div>
+        <RouterLink @click="navi.curr++" :to="`${navi.next}`">
+          <button class="nextStep" v-show="navi.next">Next Page</button>
+        </RouterLink>
+      </div>
+    </nav>
+  </div>
+
+
 </template>
 
 <style scoped>
+  .wallMobile {
+    display: block;
+  }
+  .wallDesktop {
+    display: none;
+  }
   .tranRV-enter-from {
     transform: scale(0.1);
     opacity: 0;
@@ -102,7 +116,9 @@
   .stepIndex {
     display: flex;
     justify-content: center;
+    flex-flow: row nowrap;
     gap: 15px;
+    margin: 15px 0px;
   }
   .stepNumberCtnr {
     width: auto;
@@ -125,7 +141,7 @@
     align-items: center;
   }
   .stepNumberHighlighter {
-    background-color: var(--color-background-soft-invert);
+    background-color: rgb(189, 117, 91);
   }
   .stepNumberDescription {
     padding: 5px;
@@ -163,19 +179,50 @@
     grid-template-columns: 1fr 1fr;
     place-items: center;
     padding: 0px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: var(--color-background-soft);
   }
 
-@media (min-width: 1024px) {
-
-
-  header .wrapper {
+  #ctnr1, #ctnr2 {
+    width: 100vw;
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+@media (min-width: 1024px) {
+  .wallMobile {
+    display: none;
+  }
+  .wallDesktop {
+    display: block;
+  }
+  #ctnr1, #ctnr2 {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    padding: 15px;
+    border-radius: 35px;
+    overflow: hidden;
+  }
+  .stepIndex {
+    position: absolute;
+    z-index: 3;
+    flex-flow: column nowrap;
+  }
+  .stepNumberDescription {
+    display: block;
+  }
+  #ctnr2 {
+    position: relative;
+  }
+  .naviBtnCtnr {
+    position: absolute;
+    bottom: 0;
   }
 }
 </style>
