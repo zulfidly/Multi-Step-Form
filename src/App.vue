@@ -1,0 +1,181 @@
+<script setup>
+  import { reactive, watchEffect } from "vue"
+  import { RouterLink, RouterView, useRouter, useRoute,   } from 'vue-router'
+  import Wallpaper from "./components/icons/bg-sidebar-mobile.vue"
+  import { navi } from "./views/Step1Form.vue"
+  
+  const router = useRouter()
+  router.push("/") // land on home upon browser reload
+
+  watchEffect(() =>  {
+      navi.prev = router.options.routes[navi.curr].previous
+      navi.next = router.options.routes[navi.curr].next 
+      console.log(navi)
+  })
+
+  function getCurrIndex(e) {
+    navi.curr = Number(e.target.textContent) - 1
+  }
+
+
+</script>
+
+<template>
+  <Wallpaper />
+
+  <nav class="stepIndex">
+    <div class="stepNumberCtnr">
+        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==0?true:false}" to="/">1</RouterLink>
+        <section class="stepNumberDescription">
+            <h4>Step 1</h4>
+            <h3>YOUR INFO</h3>
+        </section>
+    </div>
+    <div class="stepNumberCtnr">
+        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false}" to="/step2">2</RouterLink>
+        <section class="stepNumberDescription">
+            <h4>Step 2</h4>
+            <h3>SELECT PLANS</h3>
+        </section>
+    </div>
+    <div class="stepNumberCtnr">
+        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==2?true:false}" to="/step3">3</RouterLink>
+        <section class="stepNumberDescription">
+            <h4>Step 3</h4>
+            <h3>ADD-ONS</h3>
+        </section>
+    </div>
+    <div class="stepNumberCtnr">
+        <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==3?true:false}" to="/step4">4</RouterLink>
+        <section class="stepNumberDescription">
+            <h4>Step 4</h4>
+            <h3>SUMMARY</h3>
+        </section>
+    </div>
+  </nav>
+  <RouterView v-slot="{ Component }">
+    <Transition name="tranRV" mode="out-in">
+      <component :is="Component" />
+    </Transition>
+  </RouterView>
+
+  <nav class="naviBtnCtnr">
+    <div>
+      <RouterLink @click="navi.curr--" :to="`${navi.prev}`">
+        <button class="goBack"  v-show="navi.prev">Go Back</button>
+      </RouterLink>
+    </div>
+
+    <div>
+      <RouterLink @click="navi.curr++" :to="`${navi.next}`">
+        <button class="nextStep" v-show="navi.next">Next Page</button>
+      </RouterLink>
+    </div>
+  </nav>
+</template>
+
+<style scoped>
+  .tranRV-enter-from {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  .tranRV-enter-active {
+    transition: all var(--anime-speed) ease-out;
+  }
+  .tranRV-enter-to {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .tranRV-leave-from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  .tranRV-leave-to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .tranRV-leave-active {
+    transition: all var(--anime-speed) ease-in;
+    /* transition: transform 200ms, opacity 200ms; */
+    /* animation: rv-leave-active 200ms ease-in; */
+  }
+  .stepIndex {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  .stepNumberCtnr {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: var(--color-text);
+  }
+  .stepNumber {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-text-invert);
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--color-text-invert);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+  }
+  .stepNumberHighlighter {
+    background-color: var(--color-background-soft-invert);
+  }
+  .stepNumberDescription {
+    padding: 5px;
+    display: none;
+    /* display: block; */
+  }
+  h3, h4 {
+    color: var(--color-text);
+  }
+  .nextStep {
+        width: 130px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: var(--color-text-invert);
+        color: var(--color-text);
+        font-size: 1rem;
+        border: transparent;
+        cursor: pointer;
+    }
+  .goBack {
+      width: 130px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: var(--color-text-invert);
+      color: var(--color-text);
+      font-size: 1rem;
+      border: transparent;
+      cursor: pointer;
+  }
+  .naviBtnCtnr {
+    width: 375px;
+    width: 100%;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    padding: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-background-soft);
+  }
+
+@media (min-width: 1024px) {
+
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+</style>
