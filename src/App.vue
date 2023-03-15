@@ -1,10 +1,12 @@
 <script setup>
-  import { reactive, watchEffect } from "vue"
+  import { watchEffect, ref } from "vue"
   import { RouterLink, RouterView, useRouter, useRoute,   } from 'vue-router'
+  import { navi } from "./views/Step1Form.vue"
+  import { total } from "./views/Step4Form.vue"
+  import SelectPlanFirst from "./components/SelectPlanReminder.vue"
+  import { triggerToast, showToast } from "./components/SelectPlanReminder.vue"
   import WallMobile from "./components/icons/bg-sidebar-mobile.vue"
   import WallDesktop from "./components/icons/bg-sidebar-desktop.vue"
-  import { navi } from "./views/Step1Form.vue"
-  
   const router = useRouter()
   router.push("/") // land on home upon browser reload
 
@@ -22,6 +24,10 @@
 </script>
 
 <template>
+  <Transition name="toast" mode="in-out">
+    <SelectPlanFirst v-if="showToast"/>
+  </Transition>
+
   <div id="ctnr1">
     <WallMobile class="wallMobile"/>
     <WallDesktop class="wallDesktop"/>
@@ -65,22 +71,26 @@
       </Transition>
     </RouterView>
 
-    <nav class="naviBtnCtnr">
+    <nav class="naviBtnCtnr" v-show="navi.currExt !== '/thankyou'">
       <div>
         <RouterLink @click="navi.curr--" :to="`${navi.prev}`">
           <button class="goBack"  v-show="navi.prev">Go Back</button>
         </RouterLink>
       </div>
-      <div>
-        <RouterLink @click="navi.curr++" :to="`${navi.next}`">
-          <button class="nextStep" v-show="navi.next">Next Page</button>
+      <div class="">
+        <RouterLink @click="navi.curr++" :to="`${navi.next}`" v-if="navi.next!=='/thankyou'">
+          <button class="nextStep" >Next Page</button>
+        </RouterLink>
+
+        <RouterLink  :to="`${navi.next}`"  v-else v-show="total !== 0">
+          <button class="nextStep">Confirm</button>
         </RouterLink>
       </div>
     </nav>
   </div>
-
-
 </template>
+
+
 
 <style scoped>
   .wallMobile {
@@ -88,6 +98,12 @@
   }
   .wallDesktop {
     display: none;
+  }
+  #ctnr1, #ctnr2 {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .tranRV-enter-from {
     transform: scale(0.1);
@@ -185,12 +201,7 @@
     background-color: var(--color-background-soft);
   }
 
-  #ctnr1, #ctnr2 {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
 
 @media (min-width: 1024px) {
   .wallMobile {

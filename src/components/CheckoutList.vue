@@ -49,6 +49,7 @@
                         <span v-else="isYearlyComputed=='monthly'">/mo</span>
                     </h3>
                 </div>
+
                 <div class="addOnItems" v-if="step3.CustomProfile.checked" >
                     <h3>
                         {{ step3.CustomProfile.addOns }}
@@ -74,8 +75,7 @@
     .btn_changeBillingCycle {
         color: var(--color-text);
         border: 1px solid var(--color-border);
-        background: var(--color-border-stepform);
-        text-align: center;
+        background: var(--color-text-invert);
         padding: 5px;
         border-radius: 5px;
     }

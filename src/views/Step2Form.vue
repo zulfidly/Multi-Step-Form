@@ -35,8 +35,8 @@
         Pro: false,
     })
     export const step2 = reactive({
-        plan: "",
-        billing: "",
+        plan: undefined,
+        billing: undefined,
         cost: 0,
     })
     function cl_selectedPlanMngr(x) {
@@ -149,6 +149,7 @@
     .step2MainCtnr {
         background-color: var(--color-background);
         border-radius: 10px;
+        padding: 3rem 0;
     }
     .board1 {
         width: 375px;
@@ -156,7 +157,7 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        padding: 1rem;
+        padding: 1rem ;
         gap: 1rem;
         opacity: 1;
     }

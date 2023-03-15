@@ -3,12 +3,13 @@
     import { onBeforeMount } from "vue"
     import { useRoute } from "vue-router"
     import { navi } from "./Step1Form.vue"
+    import { cl_Plan } from "./Step2Form.vue"
+    import { isYearly } from "../components/OptionsSlider.vue"
 
     import PickAddOns from "../components/PickAddOns.vue"
-    import { isYearly } from "../components/OptionsSlider.vue"
-    import { cl_Plan } from "./Step2Form.vue"
     import iconCheckmark from "../components/icons/icon-checkmark.vue"
     import iconCheckmarkPath from "../components/icons/icon-checkmark-path.vue"
+    import { triggerToast } from "../components/SelectPlanReminder.vue"
 
     const route = useRoute()
     onBeforeMount(() => {
@@ -64,6 +65,7 @@
         // console.log(e.target.dataset.option)
         if(!(cl_Plan.Arcade || cl_Plan.Advanced || cl_Plan.Pro)) {
             console.log("no step 2 selected")
+            triggerToast()
             return
         }
 

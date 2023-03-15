@@ -8,15 +8,17 @@
     import { step2 } from "./Step2Form.vue"
     import { step3 } from "./Step3Form.vue"
 
-    var total = computed(() => { return step2.cost + step3.OnlineService.cost + step3.LargerStorage.cost + step3.CustomProfile.cost })
 
     const route = useRoute()
     onBeforeMount(() => {
         navi.currExt = route.path
         navi.curr = 3
-
         // console.log(navi)
     })       
+</script>
+
+<script>
+   export var total = computed(() => { return step2.cost + step3.OnlineService.cost + step3.LargerStorage.cost + step3.CustomProfile.cost })
 </script>
 
 <template>
@@ -25,15 +27,13 @@
         <h3>Double-check everything looks OK before confirming</h3>
 
         <div class="checkoutItemsBoard">
-
             <CheckoutList>
                 <template #Plan></template>
-                <template #border></template>
-                
+                <template #border></template>                
                 <template #AddOns></template>
             </CheckoutList>
-            
         </div>
+
         <div class="checkoutItemsBoard2">
             <h2>Total ({{ isYearlyComputed }})</h2>
             <h2>${{ total }}</h2>

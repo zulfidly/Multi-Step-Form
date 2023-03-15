@@ -33,21 +33,23 @@ const router = createRouter({
       name: 'form4',
       curr: 4,
       previous: "/step3",
-      next: null,
+      next: "/thankyou",
       component: () => import('../views/Step4Form.vue')
     },
     {
-      path: "/:id",
+      path: "/thankyou",
+      name: 'formTQ',
+      curr: 4,
+      previous: "/step4",
+      next: null,
+      component: () => import('../views/ThankYou.vue')
+    },
+    {
+      path: "/:pathMatch(.*)*",
       curr: null,
       name: "not_found",
-      component: () => import('../views/Step4Form.vue')
+      component: () => import('../views/NotFound.vue')
     },
-    // {
-    //   path: "/:pathMatch(.*)*",
-    //   curr: null,
-    //   name: "not_found",
-    //   component: () => import('../views/NotFound.vue')
-    // },
   ]
 })
 

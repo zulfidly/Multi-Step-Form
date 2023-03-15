@@ -1,18 +1,62 @@
 <template>
-    <div class="userMsg">Select a Plan &#x1F3FB; &#x1F3FC;</div>
+    <div class="userMsg">O'ohh, have you select a Plan yet ?</div>
 </template>
+
+<script>
+    import { ref } from "vue"
+    export const showToast = ref(false);
+
+    export const triggerToast = () => {
+        showToast.value=true
+        setTimeout(() => showToast.value=false, 300)
+  }
+
+</script>
+
+<style>
+  .toast-enter-active {
+    animation: wobble 0.3s ease;
+  }
+  .toast-leave-active {
+    animation: fade-out 2s ease-out 3s;
+  }
+  @keyframes wobble {
+      0% { transform: translateY(-60px); opacity: 0;}
+     50% { transform: translateY(  10px); opacity: 1;}
+     60% { transform: translateX( 8px); }
+     70% { transform: translateX(-8px); }
+     80% { transform: translateX( 4px); }
+     90% { transform: translateX(-4px); }
+    100% { transform: translateX( 0px); opacity: 1;}
+  }
+  @keyframes fade-out {
+      0% { opacity: 1;}
+    100% { opacity: 0;}
+  }
+</style>
 
 <style scoped>
     .userMsg {
-        width: 350px;
-        height: 30px;
-        background-color: rgb(248, 75, 75);
-        text-align: center;
-        display:flex;
+        width: 80vw;
+        height: 60px;
+        color: var(--vt-c-indigo);
+        font-weight: 600;
+        background-color: rgb(255, 165, 61);
+        position: absolute;
+        top: 10px; 
+        opacity: 1;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        /* position: absolute; */
-        /* top: 50%;
-        left: 50%; */
-        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        border-radius: 15px;
     }
+    @media (min-width: 1024px) {
+        .userMsg{
+            font-size: 1.5rem;
+        }
+    
+    }
+
 </style>
