@@ -5,7 +5,7 @@
  - an attempt on this [Challenge](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ) by [frontendmentor.io](https://www.frontendmentor.io/)
  
  ### Gaining usage understanding of :
- - v-if, v-else, v-bind(:), v-show directive 
+ - v-if, v-else, v-bind(:), v-show directive s
  - the @click event listener
  - form @submit.prevent
  - the slot tag, and v-slot
@@ -18,6 +18,6 @@
  
 ### Routing components :
 - useRoute()
-- -useRouter()
+- useRouter()
 - RouterLink
 - RouterView
