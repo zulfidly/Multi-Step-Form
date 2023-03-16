@@ -21,3 +21,9 @@
 - useRouter()
 - RouterLink
 - RouterView
+- the :to binding 
+
+### Transition components used :
+- the Transition tag
+- toast-enter-active (with @keyframes)
+- toast-leave-active (with @keyframes)
