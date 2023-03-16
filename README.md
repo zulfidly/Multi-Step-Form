@@ -17,8 +17,8 @@
  - onBeforeMount
  
 ### Routing components :
-- useRoute()
-- useRouter()
+- useRoute() to capture link when browser is clicked to go back/forward
+- useRouter() to update the previous/next path from router(index.js)
 - RouterLink
 - RouterView
 - the :to binding 
