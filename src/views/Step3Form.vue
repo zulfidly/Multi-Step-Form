@@ -1,5 +1,5 @@
 <script setup>
-    import { onUpdated, reactive, watchEffect } from "vue"
+    import { reactive, watchEffect } from "vue"
     import { onBeforeMount } from "vue"
     import { useRoute } from "vue-router"
     import { navi } from "./Step1Form.vue"

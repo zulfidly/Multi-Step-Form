@@ -1,12 +1,14 @@
 <script setup>
-  import { watchEffect, ref } from "vue"
-  import { RouterLink, RouterView, useRouter, useRoute,   } from 'vue-router'
+  import { watchEffect } from "vue"
+  import { RouterLink, RouterView, useRouter } from 'vue-router'
   import { navi } from "./views/Step1Form.vue"
   import { total } from "./views/Step4Form.vue"
+  import { showToast } from "./components/SelectPlanReminder.vue"
   import SelectPlanFirst from "./components/SelectPlanReminder.vue"
-  import { triggerToast, showToast } from "./components/SelectPlanReminder.vue"
   import WallMobile from "./components/icons/bg-sidebar-mobile.vue"
   import WallDesktop from "./components/icons/bg-sidebar-desktop.vue"
+  import github from "./components/icons/attr-gh-fm.vue"
+
   const router = useRouter()
   router.push("/") // land on home upon browser reload
 
@@ -19,7 +21,6 @@
   function getCurrIndex(e) {
     navi.curr = Number(e.target.textContent) - 1
   }
-
 
 </script>
 
@@ -36,30 +37,33 @@
       <div class="stepNumberCtnr">
           <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==0?true:false}" to="/">1</RouterLink>
           <section class="stepNumberDescription">
-              <h4>Step 1</h4>
-              <h3>YOUR INFO</h3>
+              <h4>STEP 1</h4>
+              <h4 class="descriptionTitle">YOUR INFO</h4>
           </section>
       </div>
       <div class="stepNumberCtnr">
           <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false}" to="/step2">2</RouterLink>
           <section class="stepNumberDescription">
-              <h4>Step 2</h4>
-              <h3>SELECT PLANS</h3>
+              <h4>STEP 2</h4>
+              <h4 class="descriptionTitle">SELECT PLANS</h4>
           </section>
       </div>
       <div class="stepNumberCtnr">
           <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==2?true:false}" to="/step3">3</RouterLink>
           <section class="stepNumberDescription">
-              <h4>Step 3</h4>
-              <h3>ADD-ONS</h3>
+              <h4>STEP 3</h4>
+              <h4 class="descriptionTitle">ADD-ONS</h4>
           </section>
       </div>
       <div class="stepNumberCtnr">
           <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==3?true:false}" to="/step4">4</RouterLink>
           <section class="stepNumberDescription">
-              <h4>Step 4</h4>
-              <h3>SUMMARY</h3>
+              <h4>STEP 4</h4>
+              <h4 class="descriptionTitle">SUMMARY</h4>
           </section>
+      </div>
+      <div class="stepNumberCtnr">
+        <github />
       </div>
     </nav>
   </div>
@@ -89,9 +93,6 @@
     </nav>
   </div>
 </template>
-
-
-
 <style scoped>
   .wallMobile {
     display: block;
@@ -126,8 +127,6 @@
   }
   .tranRV-leave-active {
     transition: all var(--anime-speed) ease-in;
-    /* transition: transform 200ms, opacity 200ms; */
-    /* animation: rv-leave-active 200ms ease-in; */
   }
   .stepIndex {
     display: flex;
@@ -162,9 +161,13 @@
   .stepNumberDescription {
     padding: 5px;
     display: none;
-    /* display: block; */
-  }
-  h3, h4 {
+  margin-left: 10px;  }
+  .descriptionTitle {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  } 
+
+  h4 {
     color: var(--color-text);
   }
   .nextStep {
@@ -190,18 +193,15 @@
   .naviBtnCtnr {
     width: 375px;
     width: 100%;
-    height: 70px;
+    height: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-    padding: 0px;
     position: fixed;
-    bottom: 0;
+    bottom: 15px;
     left: 0;
     background-color: var(--color-background-soft);
   }
-
-
 
 @media (min-width: 1024px) {
   .wallMobile {
@@ -216,8 +216,7 @@
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
-    padding: 15px;
-    border-radius: 35px;
+    margin: 15px;
     overflow: hidden;
   }
   .stepIndex {

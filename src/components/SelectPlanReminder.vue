@@ -18,7 +18,7 @@
     animation: wobble 0.3s ease;
   }
   .toast-leave-active {
-    animation: fade-out 2s ease-out 3s;
+    animation: fade-out 3s ease-out 1s;
   }
   @keyframes wobble {
       0% { transform: translateY(-60px); opacity: 0;}

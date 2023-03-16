@@ -90,9 +90,7 @@
     <div class="step2MainCtnr">
         <div class="board1">
             <h1>Select your plan</h1>
-            <h3>
-                You have the option of monthly or yearly billing.
-            </h3>
+            <h3>You have the option of monthly or yearly billing.</h3>
         </div>
 
         <div class="board2">
@@ -119,9 +117,9 @@
                             <template v-else #promotion></template>
                     </PackageOptions>
                     <span class="btnSensor" 
-                    data-plan="Advanced"
-                    @click="step2clicked">
-                </span>
+                        data-plan="Advanced"
+                        @click="step2clicked">
+                    </span>
                 </button>
                 <button class="cl_step2" :class="{ highlightPlan: cl_Plan.Pro }">
                     <iconPro/>
@@ -133,9 +131,9 @@
                         <template v-else #promotion></template>
                     </PackageOptions>
                     <span class="btnSensor"
-                    data-plan="Pro"
-                    @click="step2clicked">
-                </span>
+                        data-plan="Pro"
+                        @click="step2clicked">
+                    </span>
                 </button>
             </div>
             <OptionSlider/>
@@ -149,7 +147,7 @@
     .step2MainCtnr {
         background-color: var(--color-background);
         border-radius: 10px;
-        padding: 3rem 0;
+        padding: 1rem 0;
     }
     .board1 {
         width: 375px;
@@ -157,8 +155,8 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        padding: 1rem ;
-        gap: 1rem;
+        padding: 0 1rem ;
+        gap: 0.5rem;
         opacity: 1;
     }
     .board2 {
@@ -200,6 +198,10 @@
     @media (min-width: 1024px) {
         .cl_step2 {
             height: 100px;
+        }
+        .step2MainCtnr {
+            padding: 3rem 0;
+
         }
         .board1, .board2 {
             width: var(--width-userBoard-desktop);

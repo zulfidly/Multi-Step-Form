@@ -1,7 +1,6 @@
 <script setup>
     import { reactive } from "vue"
     import { onBeforeMount } from "vue"
-    import { onMounted } from "vue"
     import { useRoute } from "vue-router"
 
     const route = useRoute()
@@ -11,10 +10,7 @@
         navi.curr = 0
         // console.log("onBeforeMount: ", navi)
     })       
-    onMounted(() => {
-        navi.currExt = route.path
-        // console.log("onMounted: ", navi)
-    })       
+     
 </script>
 
 <script>
