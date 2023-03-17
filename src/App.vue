@@ -210,6 +210,11 @@
   }
 
 @media (min-width: 1024px) {
+  #attr {
+  position: absolute;
+  bottom: 40px;
+  left: 64%;
+}
   .wallMobile {
     display: none;
   }

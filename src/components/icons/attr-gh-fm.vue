@@ -195,7 +195,7 @@ button {
     gap: 10px;
     z-index: 50;
     position: absolute;
-    top: 60%;
+    bottom: 100%;
     left: 140%;
 }
 .dragIcon path {
@@ -213,5 +213,16 @@ button {
 .frontendmentor {
     background-color: rgb(216, 216, 216);
 }
-
+@media (min-width: 1024px) {
+    #dragContent {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    z-index: 50;
+    position: absolute;
+    bottom: 115%;
+    left: 60%;
+    transform: translateX(-50%);
+}
+}
 </style>
