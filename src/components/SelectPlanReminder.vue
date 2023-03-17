@@ -8,10 +8,20 @@
 
     export const triggerToast = () => {
         showToast.value=true
-        setTimeout(() => showToast.value=false, 300)
+        setTimeout(() => {showToast.value=false; console.log("blinker")}, 1000)
   }
 
 </script>
+
+<style>
+    .blinkStep2 {
+        animation: blink-step-2 0.3s ease 0s 3;
+    }
+    @keyframes blink-step-2 {
+          0% {    background-color: transparent;            }
+        100% {    background-color: rgb(206, 193, 75);    }
+    }
+</style>
 
 <style>
   .toast-enter-active {

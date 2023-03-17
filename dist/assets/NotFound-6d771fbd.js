@@ -1,0 +1,1 @@
+import{_ as e,o,c as s,a as t}from"./index-a7aa78e6.js";const c={},n={class:"userBoard"},a=t("h1",null,"- Page does not exist -",-1),_=[a];function r(d,i){return o(),s("div",n,_)}const f=e(c,[["render",r]]);export{f as default};

@@ -44,7 +44,7 @@
           </section>
       </div>
       <div class="stepNumberCtnr">
-          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false}" to="/step2">2</RouterLink>
+          <RouterLink @click="getCurrIndex" class="stepNumber" :class="{stepNumberHighlighter: navi.curr==1?true:false, blinkStep2:showToast}"  to="/step2">2</RouterLink>
           <section class="stepNumberDescription">
               <h4>STEP 2</h4>
               <h4 class="descriptionTitle">SELECT PLANS</h4>
@@ -154,7 +154,7 @@
     height: 50px;
     border: 2px solid var(--color-text-invert);
     border-radius: 9999px;
-    background: transparent;
+    background-color: transparent;
     color: var(--color-text-invert);
     font-size: 1.5rem;
     display: flex;
@@ -162,7 +162,7 @@
     align-items: center;
   }
   .stepNumberHighlighter {
-    background-color: rgb(189, 117, 91);
+    background-color: rgb(206, 193, 75);
   }
   .stepNumberDescription {
     padding: 5px;
