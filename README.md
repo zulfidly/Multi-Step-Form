@@ -5,8 +5,9 @@
  - an attempt on this [Challenge](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ) by [frontendmentor.io](https://www.frontendmentor.io/)
  
  ### Gaining usage understanding of :
- - v-if, v-else, v-bind(:), v-show directive s
+ - v-if, v-else, v-bind, v-show directives
  - the @click event listener
+ - the @touchstart event listener
  - form @submit.prevent
  - the slot tag, and v-slot
  
@@ -27,3 +28,7 @@
 - the Transition tag
 - toast-enter-active (with @keyframes)
 - toast-leave-active (with @keyframes)
+
+### Draggable element used :
+- elements created with its SVG contents precisely scaled
+- coded in Vanilla JavaScript 

@@ -25,6 +25,8 @@
 </script>
 
 <template>
+  <github id="attr"></github>
+
   <Transition name="toast" mode="in-out">
     <SelectPlanFirst v-if="showToast"/>
   </Transition>
@@ -63,7 +65,6 @@
           </section>
       </div>
       <div class="stepNumberCtnr">
-        <github />
       </div>
     </nav>
   </div>
@@ -94,6 +95,11 @@
   </div>
 </template>
 <style scoped>
+#attr {
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+}
   .wallMobile {
     display: block;
   }
