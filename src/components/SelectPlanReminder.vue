@@ -42,7 +42,7 @@
         color: var(--vt-c-indigo);
         font-weight: 600;
         background-color: rgb(255, 165, 61);
-        position: absolute;
+        position: fixed;
         top: 10px; 
         opacity: 1;
         z-index: 10;
