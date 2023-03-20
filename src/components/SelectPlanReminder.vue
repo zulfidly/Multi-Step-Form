@@ -8,7 +8,7 @@
 
     export const triggerToast = () => {
         showToast.value=true
-        setTimeout(() => {showToast.value=false; console.log("blinker")}, 1000)
+        setTimeout(() => {showToast.value=false;}, 1000)
   }
 
 </script>

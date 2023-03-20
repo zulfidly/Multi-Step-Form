@@ -64,8 +64,6 @@
               <h4 class="descriptionTitle">SUMMARY</h4>
           </section>
       </div>
-      <div class="stepNumberCtnr">
-      </div>
     </nav>
   </div>
 
@@ -139,7 +137,7 @@
     justify-content: center;
     flex-flow: row nowrap;
     gap: 15px;
-    margin: 15px 0px;
+    margin: 10px 0px;
   }
   .stepNumberCtnr {
     width: auto;
@@ -234,6 +232,7 @@
     position: absolute;
     z-index: 3;
     flex-flow: column nowrap;
+    margin: 15px 0px;
   }
   .stepNumberDescription {
     display: block;

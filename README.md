@@ -11,7 +11,7 @@
  - form @submit.prevent
  - the slot tag, and v-slot
  
- ### Reactive components/properties used :
+ ### Non/Reactive components/properties used :
  - ref() & reactive()
  - watchEffects
  - computed property

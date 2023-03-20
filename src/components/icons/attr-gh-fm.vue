@@ -73,7 +73,7 @@
 
     onMounted(() => {
         let x = document.getElementById("dragPanIcon")
-        console.log(x)
+        // console.log(x)
         touchdragElement(x)
         dragElement(x)
     })
@@ -81,7 +81,6 @@
     function touchdragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         elmnt.ontouchstart = dragTouchDown;
-        console.log("touch down")
     
         function dragTouchDown(e) {
         e = e || window.event;
@@ -115,10 +114,10 @@
     }
 
     function dragElement(elmnt) {
-        console.log("dragElement", elmnt)
+        // console.log("dragElement", elmnt)
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         if (document.getElementById(elmnt.id + "header")) {
-            console.log(elmnt.id)
+            // console.log(elmnt.id)
             // if present, the header is where you move the DIV from:
             document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
         } else {
@@ -126,7 +125,7 @@
             elmnt.onmousedown = dragMouseDown;
         }
         function dragMouseDown(e) {
-            console.log("dragMouseDown", e)
+            // console.log("dragMouseDown", e)
             e = e || window.event;
             e.preventDefault();
             // get the mouse cursor position at startup:
@@ -137,7 +136,7 @@
             document.onmousemove = elementDrag;
         }
         function elementDrag(e) {
-            console.log("elementDrag", e)
+            // console.log("elementDrag", e)
             e = e || window.event;
             e.preventDefault();
             // calculate the new cursor position:
@@ -151,7 +150,7 @@
         }
         function closeDragElement() {
             // stop moving when mouse button is released:
-            console.log("closeDragElement")
+            // console.log("closeDragElement")
             document.onmouseup = null;
             document.onmousemove = null;
         }

@@ -64,7 +64,7 @@
     function step3summary(e) {
         // console.log(e.target.dataset.option)
         if(!(cl_Plan.Arcade || cl_Plan.Advanced || cl_Plan.Pro)) {
-            console.log("no step 2 selected")
+            // console.log("no step 2 selected")
             triggerToast()
             return
         }
